@@ -50,6 +50,7 @@ def model_impute(df):
             for i in range(df_imputed.loc[gap[0]:gap[1], 'P_DC'].shape[0]):
                 window = df_imputed.loc[df_imputed.index < gap[0] + pd.Timedelta(minutes=i*10), 
                             ['GTI', 'GHI', 'DNI', 'DHI', 'Air_Temp', 'RH', 'P_DC']].tail(window_size).values
+                if np.isnan(window).any(): continue
                 window = scaler.fit_transform(window)
                 window = torch.from_numpy(window).float().unsqueeze(0)
                 forecast = best_model(window).cpu().numpy().item()
@@ -96,3 +97,4 @@ if __name__ == "__main__":
     
     # Save the Imputed DataFrame to the output CSV file
     df_imputed.to_csv(args.output_path, index=True)
+    
