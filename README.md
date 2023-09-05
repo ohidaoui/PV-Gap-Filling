@@ -23,7 +23,7 @@ python source/impute.py data/meteo_data.csv data/pv_data.csv saves/df_imputed.cs
 ```
 
 ----------------------
-### Examples of the ipmutation
+### Examples of the imputation
 
 <p align="center"><img width="100%" src="images/test_0.png"></p>
 
