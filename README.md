@@ -19,7 +19,7 @@ Suppose you have the following CSV files:
 
 To fill gaps in the PV power generation time series you can run the following command:
 ```
-python source/impute.py data/meteo_data.csv data/pv_data.csv saves/df_imputed.csv
+python source/impute.py data/meteo_data_2022_2.csv data/System_117_2022_2.csv saves/df_imputed.csv
 ```
 
 ----------------------
