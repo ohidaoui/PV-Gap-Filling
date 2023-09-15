@@ -6,27 +6,30 @@ Gap filling for power generation time series data of PV (Photovoltaic) systems.
 2. Install the required dependencies.
 3. Run the script using the following command:
 ```
-python source/impute.py path_to_meteo_data.csv path_to_pv_data.csv output_path.csv
+python source/impute.py path_to_meteo_data.csv path_to_pv_data.csv output_path.csv model
 ```
 Replace `path_to_meteo_data.csv`, `path_to_pv_data.csv`, and `output_path.csv` with the actual file paths you want to use.
+  
+Choose the gap filling method by replacing model with `'xgb'` or `'lstm'`.
+
+> If model is not specified `'xgb'` will be used.
+
+> Note that the xgb model performs best.
 
 ------------------------
 ### Example
-Suppose you have the following CSV files:
+***test-data*** directory contains the meteo data and PV data of December 2022, they can be used for test as follows:
 
-- meteo_data.csv containing meteorological data.
-- pv_data.csv containing photovoltaic (PV) data.
-
-To fill gaps in the PV power generation time series you can run the following command:
+To fill gaps in the PV power generation time series with the Gradient Boosting regression model you can run the following command:
 ```
-python source/impute.py data/meteo_data_2022_2.csv data/System_117_2022_2.csv saves/df_imputed.csv
+python source/impute.py test-data/meteo_data_12_22.csv test-data/System_117_12_22.csv saves/df_imputed.csv 'xgb'
 ```
 
 ----------------------
 ### Examples of the imputation
 
-<p align="center"><img width="100%" src="images/test_0.png"></p>
+<p align="center"><img width="100%" src="images/xgb_test_0.png"></p>
 
-<p align="center"><img width="100%" src="images/test_1.png"></p>
+<p align="center"><img width="100%" src="images/xgb_test_1.png"></p>
 
-<p align="center"><img width="100%" src="images/test_2.png"></p>
+<p align="center"><img width="100%" src="images/xgb_test_2.png"></p>
